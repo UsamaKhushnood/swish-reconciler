@@ -1,11 +1,13 @@
 <template>
-  <section class="py-[120px] container">
-    <h1 class="text-6xl font-bold text-center">Lorem, ipsum dolor.</h1>
-    <h1 class="text-6xl font-bold text-center">
-      Marketing <span class="text-primary">Plans</span> and
-      <span class="text-primary">Pricing</span>
-    </h1>
-    <Tabs default-value="account" class="w-[340px] mx-auto mt-20">
+  <section class="py-10 md:py-[120px] container">
+    <div class="text-3xl md:text-6xl font-bold text-center">
+      <h1>Lorem, ipsum dolor.</h1>
+      <h1>
+        Marketing <span class="text-primary">Plans</span> and
+        <span class="text-primary">Pricing</span>
+      </h1>
+    </div>
+    <Tabs default-value="account" class="w-[340px] mx-auto mt-10 md:mt-20">
       <TabsList class="grid w-full grid-cols-2 rounded-full">
         <TabsTrigger
           class="text-md font-bold py-2 rounded-full"
@@ -21,7 +23,9 @@
         </TabsTrigger>
       </TabsList></Tabs
     >
-    <div class="mt-10 grid grid-cols-3 gap-4 max-w-6xl mx-auto">
+    <div
+      class="mt-10 md:grid grid-cols-3 gap-4 max-w-6xl mx-auto space-y-6 md:space-y-0"
+    >
       <div class="bg-sky-100 rounded-lg p-6 shadow">
         <h1 class="text-4xl font-bold">Basic</h1>
         <p class="text-sm mt-1 text-muted-foreground">
