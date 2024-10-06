@@ -73,7 +73,7 @@
         class="md:flex flex-grow-1 flex-1 items-center justify-between text-sm text-muted-foreground"
       >
         <p>Managing Swish transactions has never been easier.</p>
-        <p class="mt-10 md:mt-0 text-center md:text-start">
+        <p class="mt-10 md:mt-0">
           &copy; {{ new Date().getFullYear() }} Swish Reconciler, Inc. All
           rights reserved.
         </p>
