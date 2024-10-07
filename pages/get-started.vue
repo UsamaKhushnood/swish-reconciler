@@ -5,6 +5,9 @@ import { h, ref } from "vue";
 import Step1 from "@/components/get-started/Step1.vue";
 import Step2 from "@/components/get-started/Step2.vue";
 import Step3 from "@/components/get-started/Step3.vue";
+import Step4 from "@/components/get-started/Step4.vue";
+import Step5 from "@/components/get-started/Step5.vue";
+import Step6 from "@/components/get-started/Step6.vue";
 
 const formSchema = [
   z.object({
@@ -64,13 +67,48 @@ const steps = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero asperiores veniam ratione sed. Soluta est ratione aperiam. Aspernatur libero deleniti dolorem quas! Soluta tempora quam odio ipsum, laborum culpa rem!",
   },
+  {
+    step: 4,
+    title: "Recommendations",
+    question: "Recommendations",
+    description:
+      "Don't worry if you don't have all information right now, you can fill out your company details and configuration settings later.",
+  },
+  {
+    step: 5,
+    title: "Info & Configuration",
+    question:
+      "Fill out your company details and configuration settings to get started.",
+    description:
+      "Don't worry if you don't have all information right now, you can fill out your company details and configuration settings later.",
+  },
+  {
+    step: 6,
+    title: "Connect Bank",
+    question: "How would you like a connector to bookkeep?",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero asperiores veniam ratione sed. Soluta est ratione aperiam. Aspernatur libero deleniti dolorem quas! Soluta tempora quam odio ipsum, laborum culpa rem!",
+  },
+  {
+    step: 7,
+    title: "Business Info",
+    question: "What type of business do you run?",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero asperiores veniam ratione sed. Soluta est ratione aperiam. Aspernatur libero deleniti dolorem quas! Soluta tempora quam odio ipsum, laborum culpa rem!",
+  },
+  {
+    step: 8,
+    title: "Congrats",
+    question: "All Done!",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero asperiores veniam ratione sed. Soluta est ratione aperiam. Aspernatur libero deleniti dolorem quas! Soluta tempora quam odio ipsum, laborum culpa rem!",
+  },
 ];
 
 function onSubmit(values: any) {
   loading.value = true;
   setTimeout(() => {
     loading.value = false;
-    alert("Form submitted successfully!");
     console.log(JSON.stringify(values, null, 2));
     router.push("/recommended-feature");
   }, 2000);
@@ -117,14 +155,14 @@ function onSubmit(values: any) {
                     class="relative flex w-full flex-col items-center justify-center"
                     :step="step.step"
                   >
-                    <div class="mt-5 flex flex-col items-center text-center">
+                    <!-- <div class="mt-5 flex flex-col items-center text-center">
                       <StepperTitle
                         :class="[state === 'active' && 'text-primary']"
                         class="text-xs font-semibold transition mb-2"
                       >
                         {{ step.title }}
                       </StepperTitle>
-                    </div>
+                    </div> -->
 
                     <StepperTrigger as-child>
                       <Button
@@ -171,6 +209,47 @@ function onSubmit(values: any) {
                   <template v-if="stepIndex === 3">
                     <Step3 />
                   </template>
+
+                  <template v-if="stepIndex === 4">
+                    <Step4 />
+                  </template>
+
+                  <template v-if="stepIndex === 5">
+                    <Step5 />
+                  </template>
+                  <template v-if="stepIndex === 6">
+                    <Step6 />
+                  </template>
+
+                  <tempalte v-if="stepIndex === 7">
+                    <h1 class="text-xl font-bold mb-3">
+                      Finally, lets connect to Fortnox.
+                    </h1>
+                    <Button
+                      size="lg"
+                      class="bg-green-900 hover:bg-green-950 py-6 rounded-lg w-full text-xl"
+                      >Connect</Button
+                    >
+                  </tempalte>
+
+                  <template v-if="stepIndex === 8">
+                    <h1 class="text-xl font-bold">Congrats, you're all set!</h1>
+                    <p>
+                      Would you like to activate the services as of tomorrow's
+                      date earliest?
+                    </p>
+                    <RadioGroup default-value="comfortable">
+                      <div class="flex items-center space-x-2">
+                        <RadioGroupItem id="r1" value="default" />
+                        <Label for="r1">Yes, Go!</Label>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <RadioGroupItem id="r2" value="comfortable" />
+                        <Label for="r2">No, start the sync from date</Label>
+                      </div>
+                    </RadioGroup>
+                  </template>
+
                   <div class="flex items-center justify-between mt-4">
                     <Button
                       :disabled="isPrevDisabled"
@@ -179,14 +258,27 @@ function onSubmit(values: any) {
                     >
                       Back
                     </Button>
-                    <div class="flex items-center gap-3">
+                    <div
+                      class="md:flex text-right space-y-3 md:space-y-0 md:text-start items-center gap-3"
+                    >
+                      <Button
+                        v-if="stepIndex === 4"
+                        class="hover:bg-gray-100 hover:text-black"
+                        variant="outline"
+                        :type="meta.valid ? 'button' : 'submit'"
+                        :disabled="isNextDisabled"
+                        @click="meta.valid && nextStep()"
+                      >
+                        No, I need more help
+                      </Button>
                       <Button
                         v-if="stepIndex !== steps.length"
                         :type="meta.valid ? 'button' : 'submit'"
                         :disabled="isNextDisabled"
                         @click="meta.valid && nextStep()"
                       >
-                        Next
+                        <span v-if="stepIndex === 4"> Sounds right for me</span>
+                        <span v-else>Next</span>
                       </Button>
                       <Button
                         :loading="loading"
