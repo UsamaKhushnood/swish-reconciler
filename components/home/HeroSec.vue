@@ -10,7 +10,9 @@
           Simplified Bookkeeping for Your Swish Transactions
         </h2>
         <div class="md:flex items-center text-center md:text-start pt-8 gap-4">
-          <Button size="lg">Get Started</Button>
+          <router-link to="/get-started">
+            <Button size="lg">Get Started</Button>
+          </router-link>
           <p class="text-xl font-bold mt-4 md:mt-0">
             Limited-time offer <br />
             50% off for 6 months

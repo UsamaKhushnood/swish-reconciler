@@ -1,16 +1,4 @@
 <template>
-  <div class="bg-black py-1">
-    <Vue3Marquee :duration="30" clone>
-      <h6
-        class="mx-1 font-bold text-primary-foreground flex items-center gap-1"
-        v-for="(text, x) in marquee"
-        :key="x"
-      >
-        {{ text }}
-        <Icon icon="radix-icons:dot-filled" class="h-[1.2rem] w-[1.2rem]" />
-      </h6>
-    </Vue3Marquee>
-  </div>
   <div class="container py-20">
     <div class="md:flex justify-between">
       <div class="flex flex-col">
@@ -99,14 +87,5 @@ const footerLinks = ref([
     heading: "Company",
     links: ["About", "Blog", "Job", "Press", "Partners"],
   },
-]);
-
-const marquee = ref([
-  "How it works",
-  "Documentation",
-  "Guides",
-  "API Status",
-  "Pricing",
-  "Subscribe to newsletter",
 ]);
 </script>

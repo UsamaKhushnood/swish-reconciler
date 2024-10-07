@@ -3,7 +3,7 @@
     :class="
       cn(
         'sticky top-0 flex h-16 items-center gap-4  z-10 transition-colors duration-300',
-        isScrolled ? 'bg-white shadow' : 'bg-purple-100'
+        !isScrolled && $route.path == '/' ? 'bg-purple-100' : ' bg-white shadow'
       )
     "
   >
@@ -84,10 +84,11 @@ onUnmounted(() => {
 });
 
 const navLinks = ref([
-  { text: "Home", href: "#" },
-  { text: "Features", href: "#features" },
-  { text: "Plans & Pricing", href: "#pricing" },
-  { text: "FAQ's", href: "#faqs" },
-  { text: "Contact", href: "#contact" },
+  { text: "Home", href: "/#" },
+  { text: "Features", href: "/#features" },
+  { text: "Get Started", href: "/#get-started" },
+  { text: "Plans & Pricing", href: "/#pricing" },
+  { text: "FAQ's", href: "/#faqs" },
+  { text: "Contact", href: "/#contact" },
 ]);
 </script>
